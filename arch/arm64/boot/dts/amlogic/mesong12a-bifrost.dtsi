@@ -4,8 +4,9 @@
  */
 
 / {
+
 	gpu:bifrost {
-		compatible = "amlogic,meson-g12a-mali";
+		compatible = "arm,malit60x", "arm,malit6xx", "arm,mali-midgard";
 		#cooling-cells = <2>;		/* min followed by max */
 		reg = <0 0xFFE40000 0 0x04000>, /*mali APB bus base address*/
 			<0 0xFFD01000 0 0x01000>, /*reset register*/
@@ -13,10 +14,13 @@
 			<0 0xFF63c000 0 0x01000>, /*hiubus for gpu clk cntl*/
 			<0 0xFFD01000 0 0x01000>; /*reset register*/
 		interrupt-parent = <&gic>;
-		interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH>,
-			     <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH>,
-			     <GIC_SPI 162 IRQ_TYPE_LEVEL_HIGH>;
-		interrupt-names = "gpu", "mmu", "job";
+		interrupts = <0 160 4>, <0 161 4>, <0 162 4>;
+		interrupt-names = "GPU", "MMU", "JOB";
+		/* ACE-Lite = 0; ACE = 1; No-coherency = 31; */
+		/* system-coherency = <31>; */
+
+		num_of_pp = <2>;
+		sc_mpp = <1>; /* number of shader cores used most of time. */
 
 		tbl =  <&dvfs285_cfg
 			&dvfs400_cfg
@@ -106,4 +110,4 @@
 		};
 	};
 
-};
+};/* end of / */
