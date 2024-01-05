@@ -1,4 +1,4 @@
-#include "sc2_s905x4_ah212_linux.dts"
+#include "meson-sc2-s905x4-ah212.dts"
 #include "coreelec_sc2_common.dtsi"
 
 / {
