@@ -1,5 +1,4 @@
 #include "meson-sc2-s905x4-ah212.dts"
-#include "coreelec_sc2_common.dtsi"
 
 / {
 	model = "Amlogic";
